@@ -6,7 +6,7 @@ export const companyData = [
         profit: 20,
         ebitda: "+€15M",
         grossMargin: 5,
-        keyInsights: "Strong growth"
+        keyInsights: ["Strong growth"]
     },
     {
         companyName: "Tech Solutions",
@@ -15,7 +15,7 @@ export const companyData = [
         profit: -10,
         ebitda: "+€8M",
         grossMargin: -2,
-        keyInsights: "Growth leader: tech"
+        keyInsights: ["Growth leader: tech"]
     },
     {
         companyName: "Future Corp.",
@@ -24,7 +24,7 @@ export const companyData = [
         profit: 30,
         ebitda: "+€25M",
         grossMargin: 8,
-        keyInsights: "Good growth"
+        keyInsights: ["Good growth"]
     },
     {
         companyName: "Expand LLC",
@@ -33,7 +33,7 @@ export const companyData = [
         profit: -5,
         ebitda: "+€2M",
         grossMargin: -4,
-        keyInsights: "Poor expansion"
+        keyInsights: ["Poor expansion"]
     },
     {
         companyName: "Global Co.",
@@ -42,7 +42,7 @@ export const companyData = [
         profit: 50,
         ebitda: "+€40M",
         grossMargin: 10,
-        keyInsights: "Market leader"
+        keyInsights: ["Market leader"]
     },
     {
         companyName: "Alpha Inc.",
@@ -51,7 +51,7 @@ export const companyData = [
         profit: 15,
         ebitda: "+€10M",
         grossMargin: 3,
-        keyInsights: "Stable performance"
+        keyInsights: ["Stable performance"]
     },
     {
         companyName: "Omega LLC",
@@ -60,7 +60,7 @@ export const companyData = [
         profit: 25,
         ebitda: "+€18M",
         grossMargin: 6,
-        keyInsights: "High potential"
+        keyInsights: ["High potential"]
     },
     {
         companyName: "Pioneer Ltd.",
@@ -69,7 +69,7 @@ export const companyData = [
         profit: -8,
         ebitda: "+€1M",
         grossMargin: -5,
-        keyInsights: "Needs improvement"
+        keyInsights: ["Needs improvement"]
     },
     {
         companyName: "Venture Co.",
@@ -78,7 +78,7 @@ export const companyData = [
         profit: 45,
         ebitda: "+€35M",
         grossMargin: 9,
-        keyInsights: "Excellent growth"
+        keyInsights: ["Excellent growth"]
     },
     {
         companyName: "Strive Inc.",
@@ -87,7 +87,7 @@ export const companyData = [
         profit: 18,
         ebitda: "+€12M",
         grossMargin: 4,
-        keyInsights: "Consistent growth"
+        keyInsights: ["Consistent growth"]
     },
     {
         companyName: "Quantum Corp.",
@@ -96,7 +96,7 @@ export const companyData = [
         profit: 28,
         ebitda: "+€22M",
         grossMargin: 7,
-        keyInsights: "Tech innovator"
+        keyInsights: ["Tech innovator"]
     },
     {
         companyName: "Synergy LLC",
@@ -105,7 +105,7 @@ export const companyData = [
         profit: -12,
         ebitda: "+€7M",
         grossMargin: -3,
-        keyInsights: "Restructuring needed"
+        keyInsights: ["Restructuring needed"]
     },
     {
         companyName: "Apex Solutions",
@@ -114,7 +114,7 @@ export const companyData = [
         profit: 32,
         ebitda: "+€28M",
         grossMargin: 8.5,
-        keyInsights: "Strong market position"
+        keyInsights: ["Strong market position"]
     },
     {
         companyName: "Zenith Inc.",
@@ -123,7 +123,7 @@ export const companyData = [
         profit: 12,
         ebitda: "+€9M",
         grossMargin: 2.5,
-        keyInsights: "Steady growth"
+        keyInsights: ["Steady growth"]
     },
     {
         companyName: "Meridian Co.",
@@ -132,7 +132,7 @@ export const companyData = [
         profit: 48,
         ebitda: "+€38M",
         grossMargin: 9.5,
-        keyInsights: "Top performer"
+        keyInsights: ["Top performer"]
     },
     {
         companyName: "Catalyst Corp.",
@@ -141,7 +141,7 @@ export const companyData = [
         profit: 14,
         ebitda: "+€11M",
         grossMargin: 3.5,
-        keyInsights: "Good prospects"
+        keyInsights: ["Good prospects"]
     },
     {
         companyName: "Momentum LLC",
@@ -150,7 +150,7 @@ export const companyData = [
         profit: 22,
         ebitda: "+€19M",
         grossMargin: 6.5,
-        keyInsights: "Growing fast"
+        keyInsights: ["Growing fast"]
     },
     {
         companyName: "Horizon Ltd.",
@@ -159,7 +159,7 @@ export const companyData = [
         profit: -7,
         ebitda: "+€1.5M",
         grossMargin: -4.5,
-        keyInsights: "Challenging market"
+        keyInsights: ["Challenging market"]
     },
     {
         companyName: "Elevate Co.",
@@ -168,7 +168,7 @@ export const companyData = [
         profit: 42,
         ebitda: "+€33M",
         grossMargin: 8.8,
-        keyInsights: "Leading the pack"
+        keyInsights: ["Leading the pack"]
     },
     {
         companyName: "Fusion Inc.",
@@ -177,7 +177,7 @@ export const companyData = [
         profit: 16,
         ebitda: "+€13M",
         grossMargin: 4.2,
-        keyInsights: "Solid growth"
+        keyInsights: ["Solid growth"]
     },
     {
         companyName: "Matrix Corp.",
@@ -186,7 +186,7 @@ export const companyData = [
         profit: 29,
         ebitda: "+€24M",
         grossMargin: 7.8,
-        keyInsights: "Innovative solutions"
+        keyInsights: ["Innovative solutions"]
     },
     {
         companyName: "Visionary LLC",
@@ -195,7 +195,7 @@ export const companyData = [
         profit: -15,
         ebitda: "+€6M",
         grossMargin: -3.8,
-        keyInsights: "Turnaround strategy"
+        keyInsights: ["Turnaround strategy"]
     },
     {
         companyName: "Pinnacle Solutions",
@@ -204,7 +204,7 @@ export const companyData = [
         profit: 34,
         ebitda: "+€30M",
         grossMargin: 9.2,
-        keyInsights: "Exceptional performance"
+        keyInsights: ["Exceptional performance"]
     },
     {
         companyName: "NextGen Inc.",
@@ -213,6 +213,6 @@ export const companyData = [
         profit: 10,
         ebitda: "+€8.5M",
         grossMargin: 2.8,
-        keyInsights: "Emerging player"
+        keyInsights: ["Emerging player"]
     }
 ];

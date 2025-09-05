@@ -1,32 +1,69 @@
 "use client"
 import Header from "@/components/ui/Header";
 import { companyData } from "@/data/companies";
-import { ChevronLeft, ChevronRight, Filter, Plus, Search, TableProperties, TrendingDown, TrendingUp, Upload } from "lucide-react";
+import { ArrowDown, ArrowUp, ChevronLeft, ChevronRight, Filter, Plus, Search, TableProperties, TrendingDown, TrendingUp, Upload } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+type Company = {
+    companyName: string;
+    ceo: string;
+    revenue: string;
+    profit: number;
+    ebitda: string;
+    grossMargin: number;
+    keyInsights: string;
+};
+
 const Page = () => {
-    const [companies, setCompanies] = useState(companyData);
-    const [filteredCompanies, setFilteredCompanies] = useState(companies);
+    const [companies, setCompanies] = useState<Company[]>([]);
+    const [filteredCompanies, setFilteredCompanies] = useState<Company[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [newCompany, setNewCompany] = useState({ companyName: "", ceo: "", revenue: "", profit: 0, ebitda: "", grossMargin: 0, keyInsights: "" });
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const [newCompany, setNewCompany] = useState<Company>({ companyName: "", ceo: "", revenue: "", profit: 0, ebitda: "", grossMargin: 0, keyInsights: "" });
+    const [sortConfig, setSortConfig] = useState<{ key: keyof Company; direction: string }>({ key: "companyName", direction: "asc" });
 
     useEffect(() => {
         const storedCompanies = JSON.parse(localStorage.getItem("companies") || "[]");
-        if (storedCompanies.length > 0) {
-            setCompanies([...companyData, ...storedCompanies]);
-        }
+        setCompanies([...companyData, ...storedCompanies]);
     }, []);
 
     useEffect(() => {
-        const filtered = companies.filter(company =>
+        let filtered = companies.filter(company =>
             company.companyName.toLowerCase().includes(searchQuery.toLowerCase())
         );
+
+        if (sortConfig.key) {
+            filtered.sort((a, b) => {
+                const aValue = a[sortConfig.key];
+                const bValue = b[sortConfig.key];
+
+                // Helper function to parse revenue string like "256M"
+                const parseRevenue = (revenue: string) => {
+                    if (typeof revenue === 'string') {
+                        return parseFloat(revenue.replace('M', '')) * 1000000;
+                    }
+                    return revenue;
+                };
+
+                const aParsed = sortConfig.key === 'revenue' ? parseRevenue(aValue as string) : aValue;
+                const bParsed = sortConfig.key === 'revenue' ? parseRevenue(bValue as string) : bValue;
+
+                if (aParsed < bParsed) {
+                    return sortConfig.direction === "asc" ? -1 : 1;
+                }
+                if (aParsed > bParsed) {
+                    return sortConfig.direction === "asc" ? 1 : -1;
+                }
+                return 0;
+            });
+        }
+
         setFilteredCompanies(filtered);
-        setCurrentPage(1); // Reset to first page on search
-    }, [searchQuery, companies]);
+        setCurrentPage(1); // Reset to first page on search or sort
+    }, [searchQuery, companies, sortConfig]);
 
     const itemsPerPage = 10;
     const totalPages = Math.ceil(filteredCompanies.length / itemsPerPage);
@@ -51,9 +88,38 @@ const Page = () => {
         setNewCompany({ companyName: "", ceo: "", revenue: "", profit: 0, ebitda: "", grossMargin: 0, keyInsights: "" });
     };
 
+    const requestSort = (key: keyof Company) => {
+        let direction = "asc";
+        if (sortConfig.key === key && sortConfig.direction === "asc") {
+            direction = "desc";
+        }
+        setSortConfig({ key, direction });
+        setIsFilterOpen(false);
+    };
+
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const currentData = filteredCompanies.slice(startIndex, endIndex);
+
+    const getSortIcon = (key: keyof Company) => {
+        if (sortConfig.key !== key) {
+            return null;
+        }
+        if (sortConfig.direction === "asc") {
+            return <ArrowUp size={16} className="ml-1" />;
+        }
+        return <ArrowDown size={16} className="ml-1" />;
+    };
+
+    const filterOptions: { key: keyof Company; label: string }[] = [
+        { key: "companyName", label: "Company Name" },
+        { key: "ceo", label: "CEO/Key Person" },
+        { key: "revenue", label: "Revenue" },
+        { key: "profit", label: "Profit" },
+        { key: "ebitda", label: "EBITDA" },
+        { key: "grossMargin", label: "Gross Margin" },
+        { key: "keyInsights", label: "Key Insights" },
+    ];
 
     return (
         <div className="text-black">
@@ -65,8 +131,20 @@ const Page = () => {
                             <Search size={20} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                             <input type="text" placeholder="Search Companies" className="pl-10 pr-4 py-2 border border-gray-300 rounded-md" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                         </div>
-                        <div className="p-2 bg-white border border-gray-300 rounded-md">
-                            <Filter size={20} className="text-blue-500" />
+                        <div className="relative">
+                            <button onClick={() => setIsFilterOpen(!isFilterOpen)} className="p-2 bg-white border border-gray-300 rounded-md cursor-pointer">
+                                <Filter size={20} className="text-blue-500" />
+                            </button>
+                            {isFilterOpen && (
+                                <div className="absolute top-full mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg z-10">
+                                    {filterOptions.map(option => (
+                                        <div key={option.key} className="p-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center" onClick={() => requestSort(option.key)}>
+                                            <span>{option.label}</span>
+                                            {getSortIcon(option.key)}
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className="flex items-center gap-2">
@@ -80,7 +158,7 @@ const Page = () => {
                         </button>
                     </div>
                 </div>
-                <div className="flex justify-end items-center mb-4">
+                <div className="flex justify-end items-center my-8 ">
                     <div className="flex items-center gap-2">
                         <span>{`${startIndex + 1}-${Math.min(endIndex, filteredCompanies.length)} of ${filteredCompanies.length}`}
                         </span>
@@ -95,37 +173,39 @@ const Page = () => {
                         </button>
                     </div>
                 </div>
-                <table className="w-full border-collapse border border-gray-300 rounded-lg">
-                    <thead>
-                        <tr className="border-b border-gray-300 ">
-                            <th className="text-left p-2 border border-gray-300">Company Name</th>
-                            <th className="text-left p-2 border border-gray-300">CEO/Key Person</th>
-                            <th className="text-left p-2 border border-gray-300">Revenue</th>
-                            <th className="text-left p-2 border border-gray-300">Profit</th>
-                            <th className="text-left p-2 border border-gray-300">EBITDA</th>
-                            <th className="text-left p-2 border border-gray-300">Gross Margin</th>
-                            <th className="text-left p-2 border border-gray-300">Key Insights</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {currentData.map((company, index) => (
-                            <tr key={index} className="border-b border-gray-300">
-                                <td className="p-2 border border-gray-300"><TableProperties size={20} className="inline-block mr-2" />{company.companyName}</td>
-                                <td className="p-2 border border-gray-300"><Image src="/profile.svg" alt="profile" width={24} height={24} className="rounded-full inline-block mr-2" />{company.ceo}</td>
-                                <td className="p-2 border border-gray-300">€{company.revenue}</td>
-                                <td className={`p-2 border border-gray-300 ${company.profit > 0 ? "text-green-500" : "text-red-500"}`}>{company.profit > 0 ? `+${company.profit}` : company.profit}%</td>
-                                <td className="p-2 border border-gray-300">{company.ebitda}</td>
-                                <td className={`p-2 flex items-center gap-1 border border-gray-300 ${company.grossMargin > 0 ? "text-green-500" : "text-red-500"}`}>
-                                    {company.grossMargin > 0 ? <TrendingUp size={20} /> : <TrendingDown size={20} />}
-                                    <span className="text-black">{Math.abs(company.grossMargin)}%</span>
-                                </td>
-                                <td className="p-2 border border-gray-300">
-                                    <span className="border border-gray-400 rounded-md px-2 py-1 text-sm">{company.keyInsights}</span>
-                                </td>
+                <div className="rounded-lg border border-gray-300 overflow-hidden">
+                    <table className="w-full ">
+                        <thead>
+                            <tr className="border-b border-gray-300">
+                                <th className="text-left p-2">Company Name</th>
+                                <th className="text-left p-2">CEO/Key Person</th>
+                                <th className="text-left p-2">Revenue</th>
+                                <th className="text-left p-2">Profit</th>
+                                <th className="text-left p-2">EBITDA</th>
+                                <th className="text-left p-2">Gross Margin</th>
+                                <th className="text-left p-2">Key Insights</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {currentData.map((company) => (
+                                <tr key={company.companyName} className="border-b border-gray-300">
+                                    <td className="p-2"><TableProperties size={20} className="inline-block mr-2" />{company.companyName}</td>
+                                    <td className="p-2"><Image src="/profile.svg" alt="profile" width={24} height={24} className="rounded-full inline-block mr-2" />{company.ceo}</td>
+                                    <td className="p-2">€{company.revenue}</td>
+                                    <td className={`p-2 ${company.profit > 0 ? "text-green-500" : "text-red-500"}`}>{company.profit > 0 ? `+${company.profit}` : company.profit}%</td>
+                                    <td className="p-2">{company.ebitda}</td>
+                                    <td className={`p-2 flex items-center gap-1 ${company.grossMargin > 0 ? "text-green-500" : "text-red-500"}`}>
+                                        {company.grossMargin > 0 ? <TrendingUp size={20} /> : <TrendingDown size={20} />}
+                                        <span className="text-black">{Math.abs(company.grossMargin)}%</span>
+                                    </td>
+                                    <td className="p-2">
+                                        <span className="border border-gray-400 rounded-md px-2 py-1 text-sm">{company.keyInsights}</span>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
             {isModalOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
