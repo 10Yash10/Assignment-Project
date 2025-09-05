@@ -31,7 +31,7 @@ const Aside = () => {
         }
     ]
     return (
-        <aside className="w-16 h-screen absolute top-0 bg-neutral-900 flex flex-col items-center py-4">
+        <aside className="w-16 h-screen fixed top-0 bg-neutral-900 flex flex-col items-center py-4">
             <div className="h-20">
                 <Image src="/logo.svg" className="p-2 rounded-full bg-white" alt="logo" width={40} height={40} />
             </div>
@@ -44,8 +44,8 @@ const Aside = () => {
                     </Link>
                 ))}
             </div>
-            <div className="mt-auto">
-                <Image src="/profile.svg" alt="profile" width={40} height={40} />
+            <div className="mt-auto p-2 rounded-full bg-neutral-200">
+                <Image src="/profile.svg" alt="profile" width={20} height={20} />
             </div>
         </aside>
     )

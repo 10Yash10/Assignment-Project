@@ -132,7 +132,7 @@ const Page = () => {
                             <input type="text" placeholder="Search Companies" className="pl-10 pr-4 py-2 border border-gray-300 rounded-md" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                         </div>
                         <div className="relative">
-                            <button onClick={() => setIsFilterOpen(!isFilterOpen)} className="p-2 bg-white border border-gray-300 rounded-md cursor-pointer">
+                            <button onClick={() => setIsFilterOpen(!isFilterOpen)} className="p-2 bg-white border border-blue-500 hover:bg-blue-50 rounded-md cursor-pointer">
                                 <Filter size={20} className="text-blue-500" />
                             </button>
                             {isFilterOpen && (
@@ -148,11 +148,11 @@ const Page = () => {
                         </div>
                     </div>
                     <div className="flex items-center gap-2">
-                        <button className="flex items-center gap-2 px-4 py-2 border border-blue-500 text-blue-500 rounded-md cursor-pointer">
+                        <button className="flex items-center gap-2 px-4 py-2 border hover:bg-blue-50 border-blue-500 text-blue-500 rounded-md cursor-pointer">
                             <Upload size={20} />
                             <span>Export</span>
                         </button>
-                        <button className="flex items-center gap-2 px-4 py-2 border border-blue-500 text-blue-500 rounded-md cursor-pointer" onClick={() => setIsModalOpen(true)}>
+                        <button className="flex items-center gap-2 px-4 py-2 border hover:bg-blue-50 border-blue-500 text-blue-500 rounded-md cursor-pointer" onClick={() => setIsModalOpen(true)}>
                             <Plus size={20} />
                             <span>Add Company</span>
                         </button>
@@ -177,29 +177,29 @@ const Page = () => {
                     <table className="w-full ">
                         <thead>
                             <tr className="border-b border-gray-300">
-                                <th className="text-left p-2">Company Name</th>
-                                <th className="text-left p-2">CEO/Key Person</th>
-                                <th className="text-left p-2">Revenue</th>
-                                <th className="text-left p-2">Profit</th>
-                                <th className="text-left p-2">EBITDA</th>
-                                <th className="text-left p-2">Gross Margin</th>
-                                <th className="text-left p-2">Key Insights</th>
+                                <th className="text-left p-4">Company Name</th>
+                                <th className="text-left p-4">CEO/Key Person</th>
+                                <th className="text-left p-4">Revenue</th>
+                                <th className="text-left p-4">Profit</th>
+                                <th className="text-left p-4">EBITDA</th>
+                                <th className="text-left p-4">Gross Margin</th>
+                                <th className="text-left p-4">Key Insights</th>
                             </tr>
                         </thead>
                         <tbody>
                             {currentData.map((company) => (
-                                <tr key={company.companyName} className="border-b border-gray-300">
-                                    <td className="p-2"><TableProperties size={20} className="inline-block mr-2" />{company.companyName}</td>
-                                    <td className="p-2"><Image src="/profile.svg" alt="profile" width={24} height={24} className="rounded-full inline-block mr-2" />{company.ceo}</td>
-                                    <td className="p-2">€{company.revenue}</td>
-                                    <td className={`p-2 ${company.profit > 0 ? "text-green-500" : "text-red-500"}`}>{company.profit > 0 ? `+${company.profit}` : company.profit}%</td>
-                                    <td className="p-2">{company.ebitda}</td>
-                                    <td className={`p-2 flex items-center gap-1 ${company.grossMargin > 0 ? "text-green-500" : "text-red-500"}`}>
+                                <tr key={company.companyName} className="border-b border-gray-300 font-medium">
+                                    <td className="p-4"><TableProperties size={20} className="inline-block mr-2" />{company.companyName}</td>
+                                    <td className="p-4"><Image src="/profile.svg" alt="profile" width={24} height={24} className="rounded-full inline-block mr-2" />{company.ceo}</td>
+                                    <td className="p-4">€{company.revenue}</td>
+                                    <td className={`p-4 ${company.profit > 0 ? "text-green-500" : "text-red-500"}`}>{company.profit > 0 ? `+${company.profit}` : company.profit}%</td>
+                                    <td className="p-4">{company.ebitda}</td>
+                                    <td className={`p-4 flex items-center gap-1 ${company.grossMargin > 0 ? "text-green-500" : "text-red-500"}`}>
                                         {company.grossMargin > 0 ? <TrendingUp size={20} /> : <TrendingDown size={20} />}
                                         <span className="text-black">{Math.abs(company.grossMargin)}%</span>
                                     </td>
-                                    <td className="p-2">
-                                        <span className="border border-gray-400 rounded-md px-2 py-1 text-sm">{company.keyInsights}</span>
+                                    <td className="p-4">
+                                        <span className="border border-gray-300 rounded-full px-2 py-1 text-sm text-gray-800">{company.keyInsights}</span>
                                     </td>
                                 </tr>
                             ))}
