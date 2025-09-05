@@ -1,0 +1,218 @@
+export const companyData = [
+    {
+        companyName: "Innovate Inc.",
+        ceo: "John Doe",
+        revenue: "256M",
+        profit: 20,
+        ebitda: "+€15M",
+        grossMargin: 5,
+        keyInsights: "Strong growth"
+    },
+    {
+        companyName: "Tech Solutions",
+        ceo: "Jane Smith",
+        revenue: "180M",
+        profit: -10,
+        ebitda: "+€8M",
+        grossMargin: -2,
+        keyInsights: "Growth leader: tech"
+    },
+    {
+        companyName: "Future Corp.",
+        ceo: "Peter Jones",
+        revenue: "320M",
+        profit: 30,
+        ebitda: "+€25M",
+        grossMargin: 8,
+        keyInsights: "Good growth"
+    },
+    {
+        companyName: "Expand LLC",
+        ceo: "Mary Williams",
+        revenue: "90M",
+        profit: -5,
+        ebitda: "+€2M",
+        grossMargin: -4,
+        keyInsights: "Poor expansion"
+    },
+    {
+        companyName: "Global Co.",
+        ceo: "David Brown",
+        revenue: "500M",
+        profit: 50,
+        ebitda: "+€40M",
+        grossMargin: 10,
+        keyInsights: "Market leader"
+    },
+    {
+        companyName: "Alpha Inc.",
+        ceo: "Susan Garcia",
+        revenue: "120M",
+        profit: 15,
+        ebitda: "+€10M",
+        grossMargin: 3,
+        keyInsights: "Stable performance"
+    },
+    {
+        companyName: "Omega LLC",
+        ceo: "Michael Miller",
+        revenue: "210M",
+        profit: 25,
+        ebitda: "+€18M",
+        grossMargin: 6,
+        keyInsights: "High potential"
+    },
+    {
+        companyName: "Pioneer Ltd.",
+        ceo: "Linda Davis",
+        revenue: "75M",
+        profit: -8,
+        ebitda: "+€1M",
+        grossMargin: -5,
+        keyInsights: "Needs improvement"
+    },
+    {
+        companyName: "Venture Co.",
+        ceo: "Robert Rodriguez",
+        revenue: "450M",
+        profit: 45,
+        ebitda: "+€35M",
+        grossMargin: 9,
+        keyInsights: "Excellent growth"
+    },
+    {
+        companyName: "Strive Inc.",
+        ceo: "Patricia Martinez",
+        revenue: "150M",
+        profit: 18,
+        ebitda: "+€12M",
+        grossMargin: 4,
+        keyInsights: "Consistent growth"
+    },
+    {
+        companyName: "Quantum Corp.",
+        ceo: "James Hernandez",
+        revenue: "280M",
+        profit: 28,
+        ebitda: "+€22M",
+        grossMargin: 7,
+        keyInsights: "Tech innovator"
+    },
+    {
+        companyName: "Synergy LLC",
+        ceo: "Barbara Lopez",
+        revenue: "190M",
+        profit: -12,
+        ebitda: "+€7M",
+        grossMargin: -3,
+        keyInsights: "Restructuring needed"
+    },
+    {
+        companyName: "Apex Solutions",
+        ceo: "William Gonzalez",
+        revenue: "340M",
+        profit: 32,
+        ebitda: "+€28M",
+        grossMargin: 8.5,
+        keyInsights: "Strong market position"
+    },
+    {
+        companyName: "Zenith Inc.",
+        ceo: "Elizabeth Wilson",
+        revenue: "110M",
+        profit: 12,
+        ebitda: "+€9M",
+        grossMargin: 2.5,
+        keyInsights: "Steady growth"
+    },
+    {
+        companyName: "Meridian Co.",
+        ceo: "Richard Anderson",
+        revenue: "480M",
+        profit: 48,
+        ebitda: "+€38M",
+        grossMargin: 9.5,
+        keyInsights: "Top performer"
+    },
+    {
+        companyName: "Catalyst Corp.",
+        ceo: "Jessica Thomas",
+        revenue: "130M",
+        profit: 14,
+        ebitda: "+€11M",
+        grossMargin: 3.5,
+        keyInsights: "Good prospects"
+    },
+    {
+        companyName: "Momentum LLC",
+        ceo: "Charles Jackson",
+        revenue: "230M",
+        profit: 22,
+        ebitda: "+€19M",
+        grossMargin: 6.5,
+        keyInsights: "Growing fast"
+    },
+    {
+        companyName: "Horizon Ltd.",
+        ceo: "Karen White",
+        revenue: "85M",
+        profit: -7,
+        ebitda: "+€1.5M",
+        grossMargin: -4.5,
+        keyInsights: "Challenging market"
+    },
+    {
+        companyName: "Elevate Co.",
+        ceo: "Joseph Harris",
+        revenue: "420M",
+        profit: 42,
+        ebitda: "+€33M",
+        grossMargin: 8.8,
+        keyInsights: "Leading the pack"
+    },
+    {
+        companyName: "Fusion Inc.",
+        ceo: "Nancy Martin",
+        revenue: "160M",
+        profit: 16,
+        ebitda: "+€13M",
+        grossMargin: 4.2,
+        keyInsights: "Solid growth"
+    },
+    {
+        companyName: "Matrix Corp.",
+        ceo: "Thomas Thompson",
+        revenue: "300M",
+        profit: 29,
+        ebitda: "+€24M",
+        grossMargin: 7.8,
+        keyInsights: "Innovative solutions"
+    },
+    {
+        companyName: "Visionary LLC",
+        ceo: "Margaret Garcia",
+        revenue: "200M",
+        profit: -15,
+        ebitda: "+€6M",
+        grossMargin: -3.8,
+        keyInsights: "Turnaround strategy"
+    },
+    {
+        companyName: "Pinnacle Solutions",
+        ceo: "Christopher Martinez",
+        revenue: "360M",
+        profit: 34,
+        ebitda: "+€30M",
+        grossMargin: 9.2,
+        keyInsights: "Exceptional performance"
+    },
+    {
+        companyName: "NextGen Inc.",
+        ceo: "Daniel Robinson",
+        revenue: "100M",
+        profit: 10,
+        ebitda: "+€8.5M",
+        grossMargin: 2.8,
+        keyInsights: "Emerging player"
+    }
+];

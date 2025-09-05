@@ -1,14 +1,14 @@
 import { Bell, PanelRight } from "lucide-react";
 import YearSelector from "./YearSelector";
 
-const Header = () => {
+const Header = ({ title, showYearSelector = true }: { title: string, showYearSelector?: boolean }) => {
     return (
-        <nav className="pl-16 w-full h-20 border-b bg-white border-b-neutral-300 flex justify-between">
+        <nav className="w-full h-20 border-b bg-white border-b-neutral-300 flex justify-between">
             {/* main logo and year selector */}
             <div className="h-full flex items-center gap-6 ml-4">
                 <PanelRight className="rotate-180" strokeWidth={2} />
-                <h1 className="text-3xl font-medium">Dashboard</h1>
-                <YearSelector />
+                <h1 className="text-3xl font-medium">{title}</h1>
+                {showYearSelector && <YearSelector />}
             </div>
 
             {/* company name, notification and ai feature */}
