@@ -176,7 +176,7 @@ const Page = () => {
                 <div className="rounded-lg border border-gray-300 overflow-hidden">
                     <table className="w-full ">
                         <thead>
-                            <tr className="border-b border-gray-300">
+                            <tr className="border-b border-gray-300 text-neutral-600">
                                 <th className="text-left p-4">Company Name</th>
                                 <th className="text-left p-4">CEO/Key Person</th>
                                 <th className="text-left p-4">Revenue</th>
