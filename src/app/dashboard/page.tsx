@@ -9,6 +9,11 @@ import Image from "next/image";
 const page = () => {
     const wcCycleDays = [52, 76, 45, 88, 25, 36, 55, 65, 70, 40, 80, 30, 60, 50, 75, 48, 58, 68, 78, 88, 98, 28, 38, 48];
     const cashFlowData = ['150M', '100M', '200M', '50M', '300M', '80M', '140M', '40M', '250M', '90M', '180M', '60M', '220M', '70M', '280M', '85M', '150M', '45M', '240M', '100M', '190M', '55M', '230M', '65M'];
+    const highlightCompanyName = (desc: string, companyName: string) => {
+        if (!companyName) return desc;
+        const regex = new RegExp(`(${companyName})`, 'gi');
+        return desc.replace(regex, `<span class="text-yellow-600">$1</span>`);
+    };
     const boxInformation = [
         {
             id: 1,
@@ -88,9 +93,9 @@ const page = () => {
                         <Maximize2 className="text-blue-400" size={14} />
                     </div>
                     <div className="h-[90%] overflow-y-auto">
-                        <table className="w-full">
-                            <thead>
-                                <tr className="border-b border-gray-300 text-neutral-600">
+                        <table className="w-full ">
+                            <thead className="sticky top-0">
+                                <tr className="border-b bg-white border-gray-300 text-neutral-600">
                                     <th className="text-left p-4">Company Name</th>
                                     <th className="text-left p-4">Revenue</th>
                                     <th className="text-left p-4">Net Profit</th>
@@ -140,24 +145,28 @@ const page = () => {
                                 id: 1,
                                 heading: "Monthly Variance Summaries",
                                 desc: "Elevate Co. reported an 8% decline in profit this month, primarily driven by increased logistics expenses.",
+                                company: "Elevate Co."
                             }, {
                                 id: 2,
                                 heading: "Recommended Actions",
-                                desc: "Reduce payroll costs in Crestview Technologies by 12% to improve efficiency."
+                                desc: "Reduce payroll costs in Crestview Technologies by 12% to improve efficiency.",
+                                company: "Crestview Technologies"
                             },
                             {
                                 id: 3,
                                 heading: "Market Trends",
                                 desc: "NextGen Inc. has seen a 15% increase in customer demand attributed to the launch of their new product line.",
+                                company: "NextGen Inc."
                             },
                             {
                                 id: 4,
                                 heading: "Future Projects",
-                                desc: "Analysts predict a 10% growth in revenue for Elevate Co. next quarter, as new partnerships are expected to enhance market reach."
+                                desc: "Analysts predict a 10% growth in revenue for Elevate Co. next quarter, as new partnerships are expected to enhance market reach.",
+                                company: "Elevate Co."
                             }].map((item) => (
                                 <li className="mb-4">
                                     <h1 className="text-md text-neutral-700 font-regular">{item.heading}</h1>
-                                    <p className="text-sm text-neutral-700 font-regular">{item.desc}</p>
+                                    <p className="text-sm text-neutral-700 font-regular" dangerouslySetInnerHTML={{ __html: highlightCompanyName(item.desc, item.company) }}></p>
                                 </li>
                             ))
                             }
