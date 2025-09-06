@@ -3,13 +3,15 @@ import BarGraphComp from "@/components/ui/BarGraphComp";
 import Header from "@/components/ui/Header";
 import InfoCard from "@/components/ui/InfoCard";
 import LineChartComp from "@/components/ui/LineChart";
-import { ChartColumn, ChartSpline, Maximize, Maximize2, TableProperties, TrendingDown, TrendingUp } from "lucide-react";
+import { ChartColumn, ChartSpline, Maximize2, TableProperties, TrendingDown, TrendingUp } from "lucide-react";
 import { companyData } from "@/data/companies";
 import { lineChartData } from "@/data/linechart";
 import Image from "next/image";
 import { useState } from "react";
 
-const page = () => {
+import withAuth from "@/components/withAuth";
+
+const DashboardPage = () => {
     const [year, setYear] = useState("2024-2025");
     const wcCycleDays = [52, 76, 45, 88, 25, 36, 55, 65, 70, 40, 80, 30, 60, 50, 75, 48, 58, 68, 78, 88, 98, 28, 38, 48];
     const cashFlowData = ['150M', '100M', '200M', '50M', '300M', '80M', '140M', '40M', '250M', '90M', '180M', '60M', '220M', '70M', '280M', '85M', '150M', '45M', '240M', '100M', '190M', '55M', '230M', '65M'];
@@ -190,4 +192,4 @@ const page = () => {
     )
 }
 
-export default page;
+export default withAuth(DashboardPage);

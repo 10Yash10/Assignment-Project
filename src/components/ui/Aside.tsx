@@ -1,12 +1,28 @@
 "use client"
-import { Database, ListTree, Settings, User } from "lucide-react";
+import { Database, ListTree, Settings } from "lucide-react";
 import { LayoutDashboard } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const Aside = () => {
     const pathname = usePathname();
+    const router = useRouter();
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [userName, setUserName] = useState("");
+
+    useEffect(() => {
+        const users = JSON.parse(localStorage.getItem("users") || "[]");
+        if (users.length > 0) {
+            setUserName(users[0].name);
+        }
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem("authenticated");
+        router.push("/login");
+    };
 
     const links = [
         {
@@ -44,8 +60,18 @@ const Aside = () => {
                     </Link>
                 ))}
             </div>
-            <div className="mt-auto p-2 rounded-full bg-neutral-200">
-                <Image src="/profile.svg" alt="profile" width={20} height={20} />
+            <div className="mt-auto relative">
+                <button onClick={() => setDropdownOpen(!dropdownOpen)} className="p-2 rounded-full bg-neutral-200 cursor-pointer">
+                    <Image src="/profile.svg" alt="profile" width={20} height={20} />
+                </button>
+                {dropdownOpen && (
+                    <div className="absolute bottom-12 left-0 w-48 bg-white border border-neutral-500 z-40 rounded-md shadow-lg overflow-hidden">
+                        <div className="p-2 text-left border-b">{userName}</div>
+                        <button onClick={handleLogout} className="w-full p-2 text-center hover:bg-red-600 cursor-pointer bg-red-500 text-white">
+                            Logout
+                        </button>
+                    </div>
+                )}
             </div>
         </aside>
     )

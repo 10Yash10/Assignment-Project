@@ -4,6 +4,7 @@ import { companyData } from "@/data/companies";
 import { ArrowDown, ArrowUp, ChevronLeft, ChevronRight, Filter, Plus, Search, TableProperties, TrendingDown, TrendingUp, Upload } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import withAuth from "@/components/withAuth";
 
 type Company = {
     companyName: string;
@@ -31,7 +32,7 @@ const Page = () => {
     }, []);
 
     useEffect(() => {
-        let filtered = companies.filter(company =>
+        const filtered = companies.filter(company =>
             company.companyName.toLowerCase().includes(searchQuery.toLowerCase())
         );
 
@@ -231,4 +232,4 @@ const Page = () => {
     )
 }
 
-export default Page;
+export default withAuth(Page);
