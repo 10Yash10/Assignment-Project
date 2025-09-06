@@ -2,7 +2,13 @@
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-export default function LineChartComp({ data }: { data: any[] }) {
+type ChartData = {
+    month: string;
+    revenue: number;
+    "Profit Trend": number;
+};
+
+export default function LineChartComp({ data }: { data: ChartData[] }) {
     return (
         <ResponsiveContainer width="100%" height="100%">
             <LineChart
