@@ -22,7 +22,6 @@ type CustomTooltipProps = {
     label?: string;
 };
 
-// 🎯 Custom Tooltip component
 const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
     if (active && payload && payload.length) {
         return (

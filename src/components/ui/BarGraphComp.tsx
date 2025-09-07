@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const data = [
     {
@@ -48,7 +48,43 @@ const data = [
     },
 ];
 
+type CustomTooltipProps = {
+    active?: boolean;
+    payload?: any[];
+    label?: string;
+};
+
 const BarGraphComp = () => {
+
+    const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
+        if (active && payload && payload.length) {
+            return (
+                <div
+                    className="rounded-lg bg-white p-3 shadow"
+                    style={{
+                        border: `2px solid #D3D3D3`, // border color of hovered line
+                    }}
+                >
+                    <p className="font-semibold mb-1">{label}</p>
+                    {payload.map((entry, index) => (
+                        <div key={index} className="flex items-center space-x-2">
+                            {/* colored dot */}
+                            <span
+                                className="inline-block h-3 w-3 rounded-full"
+                                style={{ backgroundColor: entry.color }}
+                            />
+                            {/* label (line name) + month + value */}
+                            <span className="text-sm">
+                                {entry.name}  : {entry.value}M
+                            </span>
+                        </div>
+                    ))}
+                </div>
+            );
+        }
+        return null;
+    };
+
     return (
         <ResponsiveContainer width="100%" height="100%">
             <BarChart
@@ -62,7 +98,7 @@ const BarGraphComp = () => {
                     bottom: 5,
                 }}
             >
-                <CartesianGrid strokeDasharray="3 3" />
+                {/* <CartesianGrid strokeDasharray="3 3" /> */}
                 <XAxis dataKey="name" />
                 <YAxis
                     label={{
@@ -75,7 +111,8 @@ const BarGraphComp = () => {
                     ticks={[20, 40, 60, 80, 100]}
                     tickFormatter={(val) => `${val}M`}
                 />
-                <Tooltip />
+                {/* <Tooltip wrapperStyle={{ border: "2px solid #D3D3D3", borderRadius: 10, overflow: "hidden" }} labelFormatter={(val) => `(${val}'25)`} formatter={(val) => `${val}M`} /> */}
+                <Tooltip content={<CustomTooltip />} />
                 <Legend iconType='circle' />
                 <Bar barSize={8} dataKey="Revenue" fill="oklch(62.3% 0.214 259.815)" radius={[9999, 9999, 0, 0]} />
                 <Bar barSize={8} dataKey={"Operating Expense"} fill="oklch(62.7% 0.265 303.9)" radius={[9999, 9999, 0, 0]} />
