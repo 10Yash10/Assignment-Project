@@ -1,0 +1,71 @@
+## Amplifai Application Guide
+
+This guide provides a comprehensive overview of the Amplifai application's functionalities.
+
+### 1. Authentication
+
+The application features a complete authentication system to protect user data and ensure secure access.
+
+#### 1.1. Registration
+
+- To create a new account, navigate to the `/login` page and click the "Register" button.
+- You will be prompted to enter your name, business email, and password.
+- After successful registration, you will be redirected to the login page to sign in with your new credentials.
+
+#### 1.2. Login
+
+- To log in, navigate to the `/login` page and enter your registered email and password.
+- Upon successful login, you will be redirected to the main dashboard.
+
+#### 1.3. Forgot Password
+
+- If you have forgotten your password, click the "Forgot Password?" link on the login page.
+- You will be asked to enter your email address and a new password.
+- If the email exists in our records, your password will be updated.
+
+#### 1.4. Protected Routes
+
+- The `dashboard`, `companies`, `users`, and `settings` pages are protected routes.
+- You must be logged in to access these pages. If you are not logged in, you will be automatically redirected to the `/login` page.
+
+### 2. Dashboard
+
+The dashboard provides a high-level overview of your business data.
+
+#### 2.1. Year Selector and Line Chart
+
+- The dashboard features a year selector that allows you to view data for different financial years.
+- When you select a year, the line chart will update to display the revenue and profit trends for that year.
+
+#### 2.2. Insights Section
+
+- The "Insights" section provides key highlights and summaries of your business performance.
+- Company names within the insights are highlighted for easy identification.
+
+### 3. Companies Page
+
+The companies page allows you to manage and view a list of companies.
+
+#### 3.1. Viewing Companies
+
+- This page displays a paginated list of companies with key information such as CEO, revenue, profit, and more.
+
+#### 3.2. Adding New Companies
+
+- You can add a new company to the list by clicking the "Add Company" button.
+- A modal will appear where you can enter the new company's details.
+
+#### 3.3. Searching and Filtering
+
+- You can search for specific companies using the search bar.
+- You can also filter the list by different criteria (e.g., company name, revenue) using the filter button.
+
+### 4. Loading State
+
+- When the application is fetching data or transitioning between pages, a rotating loader will be displayed to indicate that the application is busy.
+
+### 5. Logout
+
+- To log out, click the profile icon at the bottom of the side navigation bar.
+- A dropdown menu will appear with a "Logout" button.
+- Clicking "Logout" will clear your session and redirect you to the login page.
