@@ -16,9 +16,15 @@ type ChartData = {
     "Profit Trend": number;
 };
 
+type Payload = {
+    name: string;
+    value: number;
+    color: string;
+};
+
 type CustomTooltipProps = {
     active?: boolean;
-    payload?: any[];
+    payload?: Payload[];
     label?: string;
 };
 
