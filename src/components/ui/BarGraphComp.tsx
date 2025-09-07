@@ -56,7 +56,7 @@ const BarGraphComp = () => {
                 height={300}
                 data={data}
                 margin={{
-                    top: 5,
+                    top: 35,
                     right: 5,
                     left: 0,
                     bottom: 5,
@@ -65,12 +65,18 @@ const BarGraphComp = () => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
                 <YAxis
+                    label={{
+                        value: "(€)",
+                        position: "insideTop",
+                        offset: -30,
+                        style: { textAnchor: "start", fontSize: 14 }
+                    }}
                     domain={[20, 100]}
                     ticks={[20, 40, 60, 80, 100]}
                     tickFormatter={(val) => `${val}M`}
                 />
                 <Tooltip />
-                <Legend />
+                <Legend iconType='circle' />
                 <Bar barSize={8} dataKey="Revenue" fill="oklch(62.3% 0.214 259.815)" radius={[9999, 9999, 0, 0]} />
                 <Bar barSize={8} dataKey={"Operating Expense"} fill="oklch(62.7% 0.265 303.9)" radius={[9999, 9999, 0, 0]} />
                 <Bar barSize={8} dataKey="COGS" fill="oklch(85.2% 0.199 91.936)" radius={[9999, 9999, 0, 0]} />

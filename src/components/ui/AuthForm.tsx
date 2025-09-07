@@ -36,24 +36,21 @@ const AuthForm = () => {
 
     return (
         <div className="w-full max-w-md">
-            <div className="flex gap-4 mb-8">
+            <div className="flex gap-4 ml-8 mb-8">
                 <div className="w-10 h-10 rounded-full bg-neutral-500 text-white flex items-center justify-center" >Logo</div>
-                <h1 className="text-2xl font-bold">Amplifai</h1>
+                <h1 className="text-4xl font-bold">Amplifai</h1>
+
             </div>
-            <div className="flex border-b border-gray-300">
-                <button
-                    className={`w-1/2 py-2 text-center cursor-pointer ${isLogin ? "border-b-2 border-blue-500 text-blue-500" : "text-gray-500"}`}
-                    onClick={() => setIsLogin(true)}
-                >
-                    Login
-                </button>
-                <button
-                    className={`w-1/2 py-2 text-center  cursor-pointer ${!isLogin ? "border-b-2 border-blue-500 text-blue-500" : "text-gray-500"}`}
-                    onClick={() => setIsLogin(false)}
-                >
-                    Register
-                </button>
-            </div>
+
+            {/* heading and description */}
+            {isLogin ? <div className="ml-8">
+                <h2 className="text-2xl font-semibold">Login</h2>
+                <p className="text-sm font-regular text-neutral-400">Enter your email below to login to your account</p>
+            </div> : <div className="ml-8">
+                <h2 className="text-2xl font-semibold">Register</h2>
+                <p className="text-sm font-regular text-neutral-400">Enter your name, email and password below to create your account</p>
+            </div>}
+
             <div className="p-8">
                 {!isLogin && (
                     <div className="mb-4">

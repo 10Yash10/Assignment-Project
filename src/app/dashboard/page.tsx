@@ -114,7 +114,7 @@ const DashboardPage = () => {
                                     <th className="text-left p-4">Revenue</th>
                                     <th className="text-left p-4">Net Profit</th>
                                     <th className="text-left p-4">EBITDA</th>
-                                    <th className="text-left p-4">Cash Flow (€ M)</th>
+                                    <th className="text-left p-4">Cash Flow(€M)</th>
                                     <th className="text-left p-4">WC Cycle (Days)</th>
                                 </tr>
                             </thead>

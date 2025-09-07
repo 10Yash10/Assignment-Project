@@ -6,7 +6,7 @@ const InfoCard = ({ ukey, title, price, gain }: { ukey: number, title: string, p
     return (
         <div key={ukey} className="p-4 flex flex-1 flex-col gap-2 border border-neutral-300 rounded-lg">
             <span className="text-sm font-regular text-neutral-500">{title}</span>
-            <span className="text-2xl font-medium ">{price}</span>
+            <span className="text-2xl font-medium ">{price.endsWith("%") ? price : "€" + price}</span>
             <span className={`text-sm font-medium ${color} flex items-center gap-1`}>{sign}{gain}</span>
         </div>
     )

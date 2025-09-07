@@ -160,7 +160,7 @@ const Page = () => {
                     </div>
                 </div>
                 <div className="flex justify-end items-center my-8 ">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 text-neutral-600">
                         <span>{`${startIndex + 1}-${Math.min(endIndex, filteredCompanies.length)} of ${filteredCompanies.length}`}
                         </span>
                         <button onClick={handlePrevPage} disabled={currentPage === 1} className="px-3 flex items-center disabled:opacity-50 cursor-pointer text-neutral-600">
@@ -209,7 +209,7 @@ const Page = () => {
                 </div>
             </div>
             {isModalOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                <div className="fixed inset-0 bg-black/40 bg-opacity-50 flex items-center justify-center">
                     <div className="bg-white p-8 rounded-lg">
                         <h2 className="text-2xl mb-4">Add New Company</h2>
                         <div className="grid grid-cols-2 gap-4">
@@ -222,8 +222,8 @@ const Page = () => {
                             <input type="text" placeholder="Key Insights" value={newCompany.keyInsights} onChange={(e) => setNewCompany({ ...newCompany, keyInsights: e.target.value })} className="p-2 border border-gray-300 rounded-md" />
                         </div>
                         <div className="flex justify-end gap-4 mt-4">
-                            <button onClick={() => setIsModalOpen(false)} className="px-4 py-2 rounded-md bg-gray-200">Cancel</button>
-                            <button onClick={handleAddCompany} className="px-4 py-2 rounded-md bg-blue-500 text-white">Add</button>
+                            <button onClick={() => setIsModalOpen(false)} className="px-4 py-2 rounded-md bg-gray-200 cursor-pointer">Cancel</button>
+                            <button onClick={handleAddCompany} className="px-4 py-2 rounded-md bg-blue-500 text-white cursor-pointer">Add</button>
                         </div>
                     </div>
                 </div>

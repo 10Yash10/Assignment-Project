@@ -4,7 +4,7 @@ import withAuth from "@/components/withAuth";
 
 const SettingsPage = () => {
     return (
-        <div>settings page</div>
+        <div className="flex h-screen justify-center items-center text-5xl text-blue-500 font-bold">Stay Tuned, Coming Soon🚀</div>
     )
 }
 

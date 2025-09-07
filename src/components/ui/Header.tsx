@@ -21,7 +21,7 @@ const Header = ({ title, showYearSelector = true, selectedYear, onYearChange }: 
                     <div className="w-2 h-2 bg-red-500 absolute top-0 right-0 rounded-full animate-ping" />
                     <Bell fill="black" size={16} />
                 </div>
-                <button className="h-1/2 border-2 border-yellow-500 px-4 rounded-lg bg-gradient-to-r from-white via-yellow-200 to-white font-medium cursor-pointer hover:from-yellow-300 hover:via-white hover:to-yellow-300 duration-300">✨ Ask AI</button>
+                <button className="h-1/2 border-2 border-yellow-500 px-4 rounded-lg bg-gradient-to-r from-white via-yellow-200 to-white font-medium cursor-pointer hover:from-yellow-300 hover:via-white hover:to-yellow-300 duration-300">✨ AI Chat</button>
             </div>
         </nav>
     )
